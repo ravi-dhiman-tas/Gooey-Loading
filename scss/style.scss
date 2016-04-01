@@ -1,0 +1,53 @@
+$menu-items: 7;
+$delay: 0.0;
+body {
+  background: #E5798B;
+}
+.dots {
+  display: block;
+  width: 400px;
+  height: 300px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  filter: url('#goo');
+  text-align: center;
+}
+
+.dots .base {
+  width: 100%;
+  background: #333;
+  height: 10%;
+  margin-top: -20px;
+
+}
+.dots span {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  background: #333;
+  border-radius: 100%;
+  margin: 5px;
+  transform: translateY(10px);
+
+}
+
+@for $i from 1 through $menu-items{
+    .dots span:nth-child(#{$i}){
+      $d: $delay + $i;
+        animation-name: anim;
+        animation-duration: 1.5s;
+        animation-delay: #{'0.' + $d + 's'};
+        animation-iteration-count: infinite;
+        animation-timing-function: cubic-bezier(.36,.01,.7,1);
+    }
+  }
+
+
+
+@keyframes anim {
+50% {
+    transform: translateY(30px);
+  } 
+}
